@@ -14,7 +14,15 @@ const app=express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(cors());
+const cors = require('cors');
+app.use(cors())
+app.use(function(req,res,next){
+    res.setHeader('Access-Control-Allow-Origin','*');
+    res.setHeader('Access-Control-Allow-Methods','GET,POST,OPTIONS,DELETE,UPDATE,PUT,PATCH');
+    res.setHeader('Access-Control-Allow-Headers','X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials',true);
+    next();
+});
 
 dotenv.config();
 const url = process.env.MONGO_URL;
