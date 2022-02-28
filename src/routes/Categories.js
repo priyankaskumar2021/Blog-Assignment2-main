@@ -16,7 +16,7 @@ categoriessRouter.post("/api/", async (req, res) => {
 
 
 //GET CATEGORIES
-categoriessRouter.get("/api/", async (req, res) => {
+categoriessRouter.get("/api/categories", async (req, res) => {
     try {
       const cats = await Categories.find();
       res.status(200).json(cats);
