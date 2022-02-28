@@ -4,7 +4,7 @@ const Categories = require("../model/CategoriesDB");
 
 
 //CREATE CATEGORY
-categoriessRouter.post("/", async (req, res) => {
+categoriessRouter.post("/api/", async (req, res) => {
     const newCat = new Categories(req.body);
     try {
       const savedCat = await newCat.save();
@@ -16,7 +16,7 @@ categoriessRouter.post("/", async (req, res) => {
 
 
 //GET CATEGORIES
-categoriessRouter.get("/", async (req, res) => {
+categoriessRouter.get("/api/", async (req, res) => {
     try {
       const cats = await Categories.find();
       res.status(200).json(cats);

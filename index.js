@@ -8,7 +8,7 @@ const authRoute = require("./src/routes/Authoriztion");
 const catRoute = require("./src/routes/Categories");
 const postRoute = require("./src/routes/Posts");
 
-var port = process.env.PORT || 5000;
+var port = process.env.PORT || 3006;
 
 const app=express();
 

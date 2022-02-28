@@ -4,7 +4,7 @@ const Posts = require("../model/BlogDB");
 
 
 //CREATE POST
-postsRouter.post("/", async (req, res) => {
+postsRouter.post("/api/", async (req, res) => {
   const newPost = new Posts(req.body);
   try {
     const savedPost = await newPost.save();
@@ -15,7 +15,7 @@ postsRouter.post("/", async (req, res) => {
 });
 
 //UPDATE POST
-postsRouter.put("/:id", async (req, res) => {
+postsRouter.put("/api/:id", async (req, res) => {
   try {
     const post = await Posts.findById(req.params.id);
     if (post.username === req.body.username) {
@@ -40,7 +40,7 @@ postsRouter.put("/:id", async (req, res) => {
 });
 
 //DELETE POST
-postsRouter.delete("/:id", async (req, res) => {
+postsRouter.delete("/api/:id", async (req, res) => {
   try {
     const post = await Posts.findById(req.params.id);
     if (post.username === req.body.username) {
@@ -59,7 +59,7 @@ postsRouter.delete("/:id", async (req, res) => {
 });
 
 //GET POST
-postsRouter.get("/:id", async (req, res) => {
+postsRouter.get("/api/:id", async (req, res) => {
   try {
     const post = await Posts.findById(req.params.id);
     res.status(200).json(post);
@@ -69,7 +69,7 @@ postsRouter.get("/:id", async (req, res) => {
 });
 
 //GET ALL POST
-postsRouter.get("/", async (req, res) => {
+postsRouter.get("/api/", async (req, res) => {
   const username = req.query.user;
   const catName = req.query.cat;
   try {

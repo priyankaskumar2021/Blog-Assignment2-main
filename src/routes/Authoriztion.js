@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 
 
 //REGISTRATION
-usersRouter.post("/register", async (req, res) => {
+usersRouter.post("/api/register", async (req, res) => {
     try {
       const salt = await bcrypt.genSalt(10);
       const hashedPass = await bcrypt.hash(req.body.password, salt);
@@ -27,7 +27,7 @@ usersRouter.post("/register", async (req, res) => {
 
 
 //LOGIN
-usersRouter.post("/login", async (req, res) => {
+usersRouter.post("/api/login", async (req, res) => {
     try {
       const user = await Users.findOne({ username: req.body.username });
       if(!user) return res.status(400).json("Wrong credentials!");
